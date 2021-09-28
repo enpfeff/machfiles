@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+curl -L http://install.ohmyz.sh | sh
+./gitActions
+rm -rf $HOME/.zshrc
+
+stow -t $HOME dunst kitty x i3 scripts zsh vim rofi polybar nvim
+
+mkdir -p $HOME/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+vim +PluginInstall +qa
+
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
